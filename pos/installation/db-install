@@ -1,0 +1,92 @@
+#!/bin/sh
+
+MYPATH=/usr/local/mysql/bin
+
+cd /pos/installation/mysql/script
+
+$MYPATH/mysql < create_lane_db
+
+
+cd /pos/installation/mysql/translog/tables
+
+$MYPATH/mysql < activities.table
+$MYPATH/mysql < activitylog.table
+$MYPATH/mysql < activitytemplog.table
+$MYPATH/mysql < alog.table
+$MYPATH/mysql < dtransactions.table
+$MYPATH/mysql < localtemptrans.table
+$MYPATH/mysql < localtrans.table
+$MYPATH/mysql < localtransarchive.table
+$MYPATH/mysql < suspended.table
+
+
+cd ../views
+
+$MYPATH/mysql < localtranstoday.viw
+$MYPATH/mysql < suspendedtoday.viw
+$MYPATH/mysql < suspendedlist.viw
+
+
+$MYPATH/mysql < lttsummary.viw
+$MYPATH/mysql < lttsubtotals.viw
+$MYPATH/mysql < subtotals.viw
+
+$MYPATH/mysql < ltt_receipt.viw
+$MYPATH/mysql < receipt.viw
+
+$MYPATH/mysql < rp_ltt_receipt.viw
+$MYPATH/mysql < rp_receipt_header.viw
+$MYPATH/mysql < rp_receipt.viw
+$MYPATH/mysql < rp_list.viw
+
+$MYPATH/mysql < screendisplay.viw
+
+$MYPATH/mysql < memdiscountadd.viw
+$MYPATH/mysql < memdiscountremove.viw
+$MYPATH/mysql < staffdiscountadd.viw
+$MYPATH/mysql < staffdiscountremove.viw
+
+$MYPATH/mysql < memchargetotals.viw
+
+cd /pos/installation/mysql/opdata/tables
+
+
+$MYPATH/mysql < chargecode.table
+$MYPATH/mysql < couponcodes.table
+$MYPATH/mysql < custdata.table
+$MYPATH/mysql < departments.table
+$MYPATH/mysql < employees.table
+$MYPATH/mysql < globalvalues.table
+$MYPATH/mysql < products.table
+$MYPATH/mysql < promomsgs.table
+$MYPATH/mysql < tenders.table
+
+cd ../data
+
+$MYPATH/mysql < couponcodes.insert
+$MYPATH/mysql < custdata.insert
+$MYPATH/mysql < departments.insert
+$MYPATH/mysql < employees.insert
+$MYPATH/mysql < globalvalues.insert
+$MYPATH/mysql < products.insert
+$MYPATH/mysql < tenders.insert
+
+cd ../views
+
+$MYPATH/mysql < chargecodeview.viw
+$MYPATH/mysql < memchargebalance.viw
+
+
+cd /pos/installation/mysql/is4c_op/tables
+
+$MYPATH/mysql < couponcodes.table
+$MYPATH/mysql < custdata.table
+$MYPATH/mysql < chargecode.table
+$MYPATH/mysql < departments.table
+$MYPATH/mysql < employees.table
+$MYPATH/mysql < products.table
+$MYPATH/mysql < tenders.table
+
+cd /pos/installation/mysql/script
+
+$MYPATH/mysql < create_acct

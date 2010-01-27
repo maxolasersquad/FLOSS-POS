@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cp /etc/rc.d/rc.mysqld /etc/rc.d/rc.mysqld.dist
+cp /etc/apache/httpd.conf /etc/apache/httpd.conf.dist
+cp /etc/apache/php.ini /etc/apache/php.ini.dist

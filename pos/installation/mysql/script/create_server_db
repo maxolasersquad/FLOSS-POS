@@ -1,0 +1,2 @@
+create database if not exists is4c_op;
+create database if not exists is4c_log;

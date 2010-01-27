@@ -1,0 +1,48 @@
+<HTML>
+<head>
+<title>Query</title>
+<!--<link rel="stylesheet" href="../src/style.css" type="text/css" />-->
+<link href="../src/style.css"
+      rel="stylesheet" type="text/css" />
+<script src="../src/CalendarControl.js"
+        language="javascript"></script>
+</head>
+<body>
+<link href="../src/style.css" rel="stylesheet" type="text/css">
+<script src="../src/CalendarControl.js" language="javascript"></script>
+<form method="POST" action="orderGuide.php" target="_blank">		
+
+<div id="box">
+	<table border="0" cellspacing="3" cellpadding="3" width='100%'>
+		<tr> 
+            <th>Select dept.*<th>&nbsp;<th>&nbsp;
+		</tr>
+		<tr valign='top'>
+<?php
+include($_SERVER["DOCUMENT_ROOT"].'/src/departments.html');
+?>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td align="right">
+				<p><b>Date Start&nbsp;</b><input type=text size=10 name=date1 onfocus="showCalendarControl(this);">&nbsp;&nbsp;*</p>
+		    	<p><b>End&nbsp;</b><input type=text size=10 name=date2 onfocus="showCalendarControl(this);">&nbsp;&nbsp;*</p>
+			</td>
+			<td>			
+				&nbsp;
+			</td>
+			<td>
+				&nbsp;
+			</td>
+		</tr>
+
+		<tr> 
+			<td align='right'> <input type=submit name=submit value="Submit"> </td>
+			<td> <input type=reset name=reset value="Start Over"> </td>
+			<td>&nbsp;</td>
+		</tr>
+	</table>
+</div>
+</form>
+</body>
+</html>

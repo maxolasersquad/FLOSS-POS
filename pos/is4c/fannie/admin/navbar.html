@@ -1,0 +1,210 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+
+  <title>Template</title>
+  <!--[imcss] *** Infinite Menus Core CSS: Keep this section in the document head for full validation. -->
+<style type="text/css">
+.imcm ul,.imcm li,.imcm div,.imcm span,.imcm a{
+	text-align:left;vertical-align:top;padding:0px;margin:0;list-style:none outside none;
+	border-style:none;background-image:none;clear:none;
+	float:none;display:block;position:static;overflow:visible;line-height:normal;
+}
+.imcm li a img{
+	display:inline;border-width:0px;
+}
+.imcm span{
+	display:inline;
+}
+.imcm .imclear,.imclear{
+	clear:both;height:0px;visibility:hidden;line-height:0px;font-size:1px;
+}
+.imcm .imsc{
+	position:relative;
+}
+.imcm .imsubc{
+	position:absolute;visibility:hidden;
+}
+.imcm li{
+	list-style:none;font-size:1px;float:left;
+}
+.imcm ul ul li{
+	width:100%;float:none !important;
+}
+.imcm a{
+	display:block;position:relative;
+}
+.imcm ul .imsc,.imcm ul .imsubc {
+	z-index:10;
+}
+.imcm ul ul .imsc,.imcm ul ul .imsubc{
+	z-index:20;
+}
+.imcm ul ul ul .imsc,.imcm ul ul .imsubc{
+	z-index:30;
+}
+.imde ul li:hover .imsubc{
+	visibility:visible;
+}
+.imde ul ul li:hover  .imsubc{
+	visibility:visible;
+}
+.imde ul ul ul li:hover  .imsubc{
+	visibility:visible;
+}
+.imde li:hover ul  .imsubc{
+	visibility:hidden;
+}
+.imde li:hover ul ul .imsubc{
+	visibility:hidden;
+}
+.imde li:hover ul ul ul  .imsubc{
+	visibility:hidden;
+}
+.imcm .imea{
+	display:block;position:relative;left:0px;font-size:1px;line-height:0px;height:0px;float:right;
+}
+.imcm .imea span{
+	display:block;position:relative;font-size:1px;line-height:0px;
+}
+.dvs,.dvm{
+	border-width:0px
+}
+/*\*//*/.imcm .imclear,.imclear{font-size:1px;}/**/
+</style>
+
+<!--[imstyles] *** Infinite Menu Styles: Keep this section in the document head for full validation. -->
+<style type="text/css">
+
+	/* --[[ Main Container ]]-- */
+	#imouter0 {
+		background-color:#FFFFFF;  
+	}
+
+	/* --[[ Sub Container ]]-- */
+	#imenus0 li ul {
+		background-color:#c0c0c0; border-style:solid; border-color:#333333; border-width:1px; 
+		padding:1px; margin:4px 0px 0px; 
+	}
+
+	/* --[[ Main Items ]]-- */
+	#imenus0 li a {
+		color:#330066; 
+		text-align:left; font-family:Arial; font-size:16px; text-decoration:none; 
+		padding:10 10 0 0; 
+	}
+
+		/* [hover] - These settings must be duplicated for IE compatibility.*/
+		#imenus0 li:hover>a {
+			background-color:#330066; color:#EEEEEE;
+		}
+		#imenus0 li a.ihover, .imde imenus0 a:hover {
+			background-color:#330066; color:#EEEEEE; 
+		}
+
+		/* [active] */
+		#imenus0 li a.iactive {}
+
+	/* --[[ Sub Items ]]-- */
+	#imenus0 ul a {
+		background-color:#FFFFFF; color:#330066; 
+		text-align:left; font-size:11px; font-weight:normal; text-decoration:none; 
+		border-style:none; border-color:#000000; border-width:1px; 
+		padding:5 0 5 10; 
+	}
+
+		/* [hover] - These settings must be duplicated for IE comptatibility.*/
+		#imenus0 ul li:hover>a {background-color:#330066; color:#EEEEEE; }
+		#imenus0 ul li a.ihover {background-color:#330066; color:#EEEEEE; }
+
+		/* [active] */
+		#imenus0 ul li a.iactive {text-decoration:underline; }
+		
+	/* --[[ description line ]]-- */
+	#sub {
+		font-family:Arial;
+		font-size:12px;
+		cursor:default;
+		color:AAAAAA;
+	}
+
+
+</style><!--end-->
+
+</head>
+  <body>
+
+
+
+<!--|**START IMENUS**|imenus0,inline-->
+
+<!--  ****** Infinite Menus Structure & Links ***** -->
+<div class="imrcmain0 imgl" style="width:140px;z-index:999999;position:relative;"><div class="imcm imde" id="imouter0"><ul id="imenus0">
+
+<li  style="width:100%;">
+	<a href="http://fannie/auto_itemMaint.php"><span class="imea imeam"><span></span></span>Item Maintenance</a>
+
+</li>
+<div class="sub">
+	Manage our product DB
+</div>
+
+<li  style="width:100%;">
+	<a href="http://fannie/batches/auto_index.php"><span class="imea imeam"><span></span></span>Sales Batches</a>
+</li>
+<div class="sub">
+	Create automated sales & price changes
+</div>
+
+<li  style="width:100%;"><a href="http://fannie/reports/auto_index.php"><span class="imea imeam"><span></span></span>Reports</a>
+	<div class="imsc">
+		<div class="imsubc" style="width:155px;top:-28px;left:135px;">
+			<ul style="">
+				<li><a href="http://fannie/reports/auto_deptSales.php"><span class="imea imeas"><span></span></span>Department Sales</a></li>
+				<li><a href="http://fannie/reports/auto_productList.php"><span class="imea imeas"><span></span></span>Product List</a></li>
+				<li><a href="http://fannie/reports/auto_period.php"><span class="imea imeas"><span></span></span>Period Report</a></li>
+				<li><a href="http://fannie/reports/auto_subdept.php"><span class="imea imeas"><span></span></span>Subdepartment Report</a></li>
+				<li><a href="http://fannie/reports/auto_hourly.php"><span class="imea imeas"><span></span></span>Hourly Sales Report</a></li>
+			</ul>
+		</div>
+	</div>
+</li>
+<div class="sub">
+	Custom reporting tools
+</div>
+
+<li  style="width:100%;"><a href="http://fannie/reportDate.php" target=blank><span class="imea imeam"><span></span></span>Dayend Report</a></li>
+<div class="sub">
+	Generate dayend sales report
+</div>
+
+<li  style="width:100%;"><a href="http://fannie/sync/auto_index.php"><span class="imea imeam"><span></span></span>Synchronize</a>
+	<div class="imsc">
+		<div class="imsubc" style="width:145px;top:-28px;left:135px;">
+			<ul style="">
+				<li><a href="http://fannie/sync/reloadproducts.php">Products</a></li>
+				<li><a href="http://fannie/sync/reloadcustdata.php">Membership</a></li>
+<!--				<li><a href="http://fannie/sync/reloademployees.php">Employees</a></li>
+				<li><a href="http://fannie/sync/reloaddepartments.php">Departments</a></li>
+				<li><a href="http://fannie/sync/reloadtenders.php">Tenders</a></li>
+-->			</ul>
+		</div>
+	</div>
+</li>
+<div class="sub">
+	Update cash registers
+</div>
+
+</ul><div class="imclear">&nbsp;</div></div></div>
+
+<!--|**END IMENUS**|-->
+
+<!--[imcode]*** Infinite Menus Settings / Code - This script reference must appear last. ***
+
+      *Note: This script is required for scripted add on support and IE 6 sub menu functionality.
+      *Note: This menu will fully function in all CSS2 browsers with the script removed.-->
+
+<script language="JavaScript" src="http://fannie/src/ocscript.js" type="text/javascript"></script>
+
+</body>
+</html>

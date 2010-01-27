@@ -1,0 +1,48 @@
+<HTML>
+<head>
+<title>Choose your own reporting adventure</title>
+<link rel="stylesheet" href="../src/style.css" type="text/css" />
+<script src="../src/CalendarControl.js" language="javascript"></script>
+<script src="../src/putfocus.js" language="javascript"></script>
+</head>
+<body onLoad='putFocus(0,0);'>
+	<form method="get" action="period.php" target="_blank">		
+	<h2>Period Report</h2>
+	<table border="0" cellspacing="5" cellpadding="5">
+		<tr> 
+			<td>
+				<p><b>Date Start</b> </p>
+		    	<p><b>End</b></p>
+		    </td>
+			<td>
+		    	<p><input type=text size=10 name=date1 onclick="showCalendarControl(this);"></p>
+            	<p><input type=text size=10 name=date2 onclick="showCalendarControl(this);"></p>
+		    </td>
+		</tr>
+		<tr> 
+			
+		</tr>		
+		<tr>
+			<td><p>Sales totals</p></td>
+			<td><input type="checkbox" value="1" name="sales"></td>
+		</tr>
+		<tr>
+			<td><p>Tender report & basket-size</p></td>
+			<td><input type="checkbox" value="1" name="tender"></td>
+		</tr>
+		<tr>
+			<td><p>Discount report</p></td>
+			<td><input type="checkbox" value="1" name="discounts"></td>
+		</tr>
+		<tr>
+			<td><p>Equity report - DETAILED</p></td>
+			<td><input type="checkbox" value="1" name="equity"></td>
+		</tr>
+		<tr> 
+			<td> <input type=submit name=submit value="Submit"> </td>
+			<td> <input type=reset name=reset value="Start Over"> </td>
+		</tr>
+	</table>
+</form>
+</body>
+</html>

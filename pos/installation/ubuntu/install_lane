@@ -1,0 +1,70 @@
+#!/bin/sh
+
+echo "Downloading and installing Apache-MySQL-PHP"
+
+apt-get update
+apt-get -y install apache2
+apt-get -y install mysql-server-5.0
+apt-get -y install mysql-client-5.0
+apt-get -y install php5
+apt-get -y install php5-mysql
+
+echo "... Done"
+
+echo "Downloading and installing other necessary packages"
+
+apt-get -y install openssh-server
+apt-get -y install openssh-client
+apt-get -y install build-essential
+apt-get -y install galeon
+
+echo "... Done"
+
+chmod -R 777 /pos
+
+echo "Establish databases"
+
+/pos/installation/ubuntu/lane_db-install
+
+
+echo "compiling scanner scale daemon"
+
+cd /pos/is4c/rs232
+gcc ssd.c -o ssd
+
+echo "... Done"
+
+echo "Installing device drivers"
+
+if [ /etc/init.d/ssd ]; then
+  rm /etc/init.d/ssd
+fi
+
+if [ /etc/init.d/lptty ]; then
+  rm /etc/init.d/lptty
+fi
+
+
+ln -s /pos/is4c/rs232/ssd /etc/init.d/ssd
+ln -s /pos/is4c/rs232/lptty /etc/init.d/lptty
+
+/pos/installation/ubuntu/rclocal_lane.pl
+
+/pos/installation/ubuntu/startssd
+/etc/init.d/lptty
+
+echo "... Done"
+
+
+/pos/installation/ubuntu/php_lane.pl
+/pos/installation/ubuntu/apache_lane.pl
+
+
+echo "IS4C configuration completed"
+cat /pos/installation/ubuntu/is4c.header
+
+echo "Enter to load browser and start IS4C: "
+read STARTIS4C
+
+/usr/bin/galeon "localhost"
+

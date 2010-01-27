@@ -1,0 +1,65 @@
+<HTML>
+<head>
+<title>Product List Report</title>
+<link rel="stylesheet" href="../style.css" type="text/css">
+</head>
+
+<body bgcolor="#FF9966">
+<form method = "post" action="PME_products.php" target="_blank">
+	<table border="0" cellspacing="3" cellpadding="5" align="center">
+		<tr> 
+            <th colspan="2" align="center"> <p><b>Select dept.</b></p></th>
+		</tr>
+		<tr>
+			<td><font size="-1"><p>
+				<input type="checkbox" value=1 name="allDepts" CHECKED><b>All Departments</b><br>
+				<input type="checkbox" name="dept[]" value="1">Grocery<br>
+				<input type="checkbox" name="dept[]" value="2">Bulk<br>
+				<input type="checkbox" name="dept[]" value="3">Perishable<br>
+				<input type="checkbox" name="dept[]" value="4">Dairy<br>
+				<input type="checkbox" name="dept[]" value="7">Cheese<br>
+				<input type="checkbox" name="dept[]" value="15">Deli<br>
+				<input type="checkbox" name="dept[]" value="5">Beer<br>
+				<input type="checkbox" name="dept[]" value="14">Wine<br>
+				</p></font>
+			</td>
+			<td><font size="-1"><p>
+				<input type="checkbox" name="dept[]" value="8">Produce<br>
+				<input type="checkbox" name="dept[]" value="6">Frozen<br>
+				<input type="checkbox" name="dept[]" value="12">NF-Supplements<br>
+				<input type="checkbox" name="dept[]" value="11">NF-Personal Care<br>
+				<input type="checkbox" name="dept[]" value="10">NF-General<br>
+				<input type="checkbox" name="dept[]" value="9">Bulk Herbs<br>
+				<input type="checkbox" name="dept[]" value="13">NF-Pet<br>				
+				<input type="checkbox" name="dept[]" value="40">Tri-Met
+				</p></font>
+			</td>
+		</tr>
+<!--	</table>
+</div>
+<div id="box">
+	<table border="0" cellspacing="3" cellpadding="5">
+		<tr> 
+			<td><p><b>Sort report by?</b></p></td>
+			<td> <select name="sort" size="1">
+					<option value="upc">UPC</option>
+					<option value="description">Description</option>
+					<option value="department">Department</option>
+					<option value="subdept">Subdepartment</option>
+				</select> 
+			</td>
+			<td>&nbsp;</td>
+		</tr>
+-->		<tr> 
+			<td><input type=submit name=submit value="Submit"> </td>
+			<td><input type=reset name=reset value="Start Over"> </td>
+			<td>&nbsp;</td>
+		</tr>
+	</table>
+</form>
+</body>
+</html>
+
+
+
+

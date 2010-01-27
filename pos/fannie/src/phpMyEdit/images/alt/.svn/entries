@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="283"
+   name=""
+   committed-date="2007-04-06T21:20:25.645901Z"
+   url="svn+ssh://tak@development.coopmetrics.coop:/home/svncoconuts/is4c/branches/backend/fannie_dev/src/phpMyEdit/images/alt"
+   last-author="joelbrock"
+   kind="dir"
+   uuid="7d961efb-bde2-0310-b8d7-a0faba88e2c2"
+   revision="329"/>
+<entry
+   committed-rev="283"
+   name="pme-delete.png"
+   text-time="2007-06-21T02:11:04.625000Z"
+   committed-date="2007-04-06T21:20:25.645901Z"
+   checksum="043b2c088fa06dbcec80f467e78777cb"
+   last-author="joelbrock"
+   kind="file"
+   prop-time="2007-06-21T02:11:04.593750Z"/>
+<entry
+   committed-rev="283"
+   name="pme-change.png"
+   text-time="2007-06-21T02:11:04.625000Z"
+   committed-date="2007-04-06T21:20:25.645901Z"
+   checksum="c7cc63a14222fd563181921ce1adba0b"
+   last-author="joelbrock"
+   kind="file"
+   prop-time="2007-06-21T02:11:04.609375Z"/>
+<entry
+   committed-rev="283"
+   name="pme-copy.png"
+   text-time="2007-06-21T02:11:04.625000Z"
+   committed-date="2007-04-06T21:20:25.645901Z"
+   checksum="4d173a6a79e429f5bebdb8352749a261"
+   last-author="joelbrock"
+   kind="file"
+   prop-time="2007-06-21T02:11:04.609375Z"/>
+<entry
+   committed-rev="283"
+   name="pme-view.png"
+   text-time="2007-06-21T02:11:04.625000Z"
+   committed-date="2007-04-06T21:20:25.645901Z"
+   checksum="6fd0f01ab40f253bdf3e0e329fa88861"
+   last-author="joelbrock"
+   kind="file"
+   prop-time="2007-06-21T02:11:04.609375Z"/>
+</wc-entries>

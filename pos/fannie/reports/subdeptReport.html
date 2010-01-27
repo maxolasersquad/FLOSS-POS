@@ -1,0 +1,66 @@
+<HTML>
+<head>
+<title>Choose your own reporting adventure</title>
+<link rel="stylesheet" href="../src/style.css" type="text/css" />
+<script src="../src/CalendarControl.js" language="javascript"></script>
+<script src="../src/putfocus.js" language="javascript"></script>
+</head>
+<body onLoad='putFocus(0,0);'>
+	<form method="post" action="subdeptReport.php" target="_blank">		
+	
+	<h2>Sub-Department report</h2>
+	
+	<table border="0" cellspacing="5" cellpadding="5">
+		<tr> 
+			<td align="right">
+				<p><b>Date Start:</b></p>
+		    	<p><b>End:</b></p>
+		    </td>
+			<td>
+		    	<p><input type=text size=10 name=date1 onclick="showCalendarControl(this);"></p>
+            	<p><input type=text size=10 name=date2 onclick="showCalendarControl(this);"></p>
+			</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr> 
+			<td align="right">
+				<p><b>Sort results by:</b></p>
+			</td>
+			<td>
+				<select size=1 name=sort>
+					<option value="dept_name">Department</option>
+					<option value="subdept_name">Subdept</option>
+					<option value="item_count">Item Count</option>
+					<option value="total">Total</option>
+				</select>
+			</td>
+			<td>&nbsp;</td> 				
+		</tr>
+		<tr>
+			<td align="right"><p><b>Include total:</b></p>
+			</td>
+			<td><input type="checkbox" value=1 name="totals"><font size="-1">(gross)</font>
+			</td>
+			<td><font size="-1">Gross total will include only the departments selected below</font>
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellspacing="5" cellpadding="5">
+		<tr valign=top>
+<?php
+include($_SERVER["DOCUMENT_ROOT"].'/src/departments.html');
+?>
+		</tr>
+		<tr>
+			<td>&nbsp;</td> 
+			<td> 
+				<input type=submit name=submit value="Submit"> 
+			</td>
+			<td>
+				<input type=reset name=reset value="Start Over">
+			</td> 
+		</tr>
+	</table>
+</form>
+</body>
+</html>

@@ -1,0 +1,14 @@
+#!/bin/sh
+
+apt-get update
+apt-get -y install apache2
+apt-get -y install mysql-server-5.0
+apt-get -y install mysql-client-5.0
+apt-get -y install php5
+apt-get -y install php5-mysql
+apt-get -y install build-essential
+
+
+/pos/installation/lane_db-install
+echo "<? phpinfo(); ?>" > /var/www/phpinfo.php
+

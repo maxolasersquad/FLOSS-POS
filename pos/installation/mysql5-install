@@ -1,0 +1,23 @@
+#!/bin/sh
+
+/etc/rc.d/rc.mysqld stop
+rm -r /usr/local/mysql
+cp -f /pos/tarball/mysql-standard-5.0.2-alpha-pc-linux-i686.tar.gz /tmp
+cd /tmp
+
+gunzip mysql-standard-5.0.2-alpha-pc-linux-i686.tar.gz
+tar -xvf mysql-standard-5.0.2-alpha-pc-linux-i686.tar
+rm mysql-standard-5.0.2-alpha-pc-linux-i686.tar
+
+mv  mysql-standard-5.0.2-alpha-pc-linux-i686 /usr/local/mysql
+cd /usr/local/mysql
+./scripts/mysql_install_db
+chown -R root .
+chown -R mysql data
+chgrp -R mysql .
+
+cd /etc/rc.d
+rm rc.mysqld
+ln -s /usr/local/mysql/support-files/mysql.server rc.mysqld
+
+

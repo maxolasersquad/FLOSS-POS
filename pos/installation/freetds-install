@@ -1,0 +1,13 @@
+#!/bin/sh
+
+cp -f /pos/tarball/freetds-stable.tgz /tmp
+cd /tmp
+
+gunzip freetds-stable.tgz
+tar -xvf freetds-stable.tar
+rm freetds-stable.tar
+
+cd freetds-0.62.4
+./configure --prefix=/usr/local/freetds --with-tdsver=8.0 --enable-msdblib --enable-dbmfix --with-gnu-ld --enable-static --enable-shared
+make
+make install

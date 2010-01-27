@@ -1,0 +1,41 @@
+#!/bin/sh
+
+echo "Downloading and installing Apache-MySQL-PHP"
+
+apt-get update
+apt-get -y install apache2
+apt-get -y install mysql-server-5.0
+apt-get -y install mysql-client-5.0
+apt-get -y install php5
+apt-get -y install php5-mysql
+
+echo "... Done"
+
+echo "Downloading and installing other necessary packages"
+
+apt-get -y install openssh-server
+apt-get -y install openssh-client
+apt-get -y install build-essential
+apt-get -y install galeon
+
+echo "... Done"
+
+chmod -R 777 /pos
+
+echo "Establish databases"
+
+/pos/installation/ubuntu/server_db-install
+
+
+/pos/installation/ubuntu/php_server.pl
+/pos/installation/ubuntu/apache_server.pl
+
+
+echo "Fannie configuration completed"
+cat /pos/installation/ubuntu/fannie.header
+
+echo "Enter to load browser and start Fannie: "
+read STARTIS4C
+
+/usr/bin/galeon "localhost"
+

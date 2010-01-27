@@ -1,0 +1,24 @@
+#!/bin/sh
+
+/etc/rc.d/rc.httpd stop
+
+cp -f /pos/tarball/php-5.0.2.tar.gz /tmp
+cd /tmp
+
+
+gunzip php-5.0.2.tar.gz
+tar -xvf php-5.0.2.tar
+rm php-5.0.2.tar
+
+rm -r /usr/local/php
+
+cd /tmp/php-5.0.2
+./configure \
+--prefix=/usr/local/php \
+--with-apxs=/usr/local/apache/bin/apxs \
+--with-sybase-ct=/usr/local/freetds \
+--with-mysql=/usr/local/mysql \
+--enable-dio
+make
+make install
+

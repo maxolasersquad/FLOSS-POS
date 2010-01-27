@@ -1,0 +1,81 @@
+<html>
+<head>
+<title>System requirements</title>
+<link type="text/css" rel="stylesheet" href="../is4c.css">
+</head>
+<body link="#666666" vlink="#666666" alink="#666666">
+<table border=0 cellpadding=0 cellspacing=0>
+<tr>
+<td width=490 align=left valign=top colspan=2>
+
+
+<h2>Hardware and system requirements</h2>
+<span class="bodytext">
+
+<p>
+<b>The Computer</b>
+
+<p>
+Any PC built within the last few years will work fine. The PHP code will run on Macs OSX as well, except that Macs don't have serial ports and therefore cannot be connected to the scanner scale. 
+
+<p>
+IS4C doesn't need too much. The first development machine was a Pentium 300. The first production lanes at the Wedge Co-op ran on Pentium 600's with 128M and 6G harddrives. Computers have become steadily faster since. These days IS4C will run comfortably even on slower laptops. The Wedge Slackware lab runs on a Pentinum 1.3G with 512M of memory. System resource usage hovers at about 15 percent, and peaking at 30%, with most of the resource being taken up by the scanner scale driver, so it's for a good cause.
+<p>
+The computer should come with the usual peripherals, including at least one monitor, keyboard and mouse. On production lanes we like to use two monitors with a Y splitter, one for the customer, and one for the cashier. A fully functional lane does require a serial port, a parallel port and network interface. 
+
+
+
+<p>
+The computer becomes a cash register by virtue of being connected to the following:
+<ul>
+<p><li>A receipt printer
+
+<p><li>A cash drawer
+
+<p><li>A programmable keyboard
+
+<p><li>A scanner-scale
+
+<p><li>And, optionally, a hand-held scanner
+</ul>
+
+
+<p>
+<b>The Receipt Printer</b>: IS4C writes directly to the parallel port and controls the printer using ASCII escape sequences specified by the manufacturer. Any receipt printer that has a parallel interface and that responds to the same escape sequences will work with IS4C. If any parallel printer should have non-standard escape sequences, it can be made to work as long as the specifications for these sequences are known. The printers that have proven to work with IS4C are
+
+<p>Epson TM-H5000II and Epson TM-H6000
+
+<p>
+The TM-H5000II seems to have disappeared, and the TM-H6000 is now the printer of choice.
+
+
+<p>
+<b>The Cash Drawer</b>
+is linked to the printer, and is controlled via the printer. The cash drawer and the printer must therefore be compatible. To work with the Epson TM-H6000, we use the AGP 100 with the Epson interface. The cash drawer responses to escape sequences sent through the parallel port, and the only command issued by IS4C to the drawer is to open it. 
+
+
+<p>
+<b>Programmable Keyboard</b>
+is essentially a board of "hot keys" programmed to send text strings to the POS. Refer to 
+<a href="keyboard.html">keyboard.html</a> 
+for more details. We use one from Preh with a P/S2 interface, but any would do. The software that configures the programmable keys invariably comes bundled with the keyboard and is specific to the keyboard. It is also usually a Windows program, which means you'll need access to a Windows computer just to program the keyboard. Once programmed, however, the keyboard can usually be plugged into other systems and be used "as is" without a special driver. Make sure that is the case, however, before you buy one.
+
+<p>
+<b>The Scanner-Scale</b> is the most expensive element on the lane, installation of scanner scales sometimes involves modifying the register islands to ensure that the scales are seated horizontally, and at the right places for reasons of efficiency and ergonomics. Just as with the printers, any scanner-scale whose polling specifics are known can theoretically be used with IS4C. In particular, the scales that have proven to work with IS4C are the Magellan 8400 and 8500, with the single cable standard RS232 serial interface.
+<p>
+In Minnesota, The speed and accuracy of scanner scale readings displayed and recorded by the point of sales has to conform to certain legal standards. This appear to be true for many other places in the world. Once your shop starts using scales of any kind, expect visits from official inspectors from time to time.
+
+
+<p>
+<b>Hand-held Scanner (optional)</b>: If you lack a scanner-scale for now, you can use a handheld scanner, or a smaller scanner that sits on the counter. The older version, still common, is called "keyboard wedge" because it resides between the keyboard and the computer, and because it sends input to the computer as if from the keyboard. Newer versions connect via the USB port independently of the keyboard. no driver is needed. It usually comes with a booklet detailing the settings for the various UPC standards. It is programmed by scanning series of special barcodes in the booklet.
+
+</span>
+<td height=20></td></tr>
+<tr><td height=1 width=490 bgcolor="#800000"></td></tr>
+
+</table>
+
+<p>&nbsp;
+
+</body>
+</html>

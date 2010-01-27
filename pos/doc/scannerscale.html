@@ -1,0 +1,165 @@
+<html>
+<head>
+<title>Installing The Scanner Scale</title>
+<link type="text/css" rel="stylesheet" href="../is4c.css">
+</head>
+<body link="#666666" vlink="#666666" alink="#666666">
+<table border=0 cellpadding=0 cellspacing=0>
+<tr>
+<td width=490 align=left valign=top>
+
+<h2>Installing the Scanner Scale</h2>
+<span class="bodytext">
+
+
+
+<p>
+An IS4C lane connects to the scanner scale via the serial port. Before the computer and the scanner-scale can communicate, the usual serial communication parameters, namely, baud rate, parity, handshake, stop bit, data bit, have to be identical on both the computer and the scanner-scale. We'll worry about the computer first.
+
+<p>
+<b>Testing the connection</b>
+
+<p>
+If your serial port is /dev/ttyS0 and you are using a Magellan scale, you can probably skip most of what follows and go directly to the 
+<a href="#summary">summary</a> below. If, however, you want to immerse yourself in the nitty gritty, do continue.
+
+<p>
+IS4C assumes that the first serial port is at /dev/ttyS0. Ascertain that it is the case on your system. The traditional method for testing and troubleshooting the serial port is to use a null modem cable to connect the computer to another with known serial port settings and then try to communicate back and forth. We won't resort to that. Not yet.
+<p>
+plug the scanner-scale into the serial port, and check that it is ready to scan. issue the command
+<pre>
+cat /dev/ttyS0
+</pre>
+Scan a barcode. If /dev/ttyS0 is your serial port, you should be able to see some input - doesn't matter that the input might look a bit strange for now. If nothing happens, then you have to identify where your serial port is, or what's wrong with it. The older standard is /dev/cua0, but that is now uncommon - deprecated, as they say. We assume that it is /dev/ttyS0.
+
+<p>Give write permission for Apache-PHP to use /dev/ttyS0. I open it up completely:
+<pre>
+chmod 777 /dev/ttyS0
+</pre>
+Set some of the communication parameters by running the script
+<pre>
+/pos/is4c/mysql/setport
+</pre>
+The command in the script is
+<pre>
+stty 9600 oddp crtscts -F /dev/ttyS0
+</pre>
+corresponding to:
+
+<p>Baud rate = 9600
+<br>parity = odd
+<br>RTS/CTS handshaking = on
+<p>
+By a happy coincidence, these happen to be the "out of the box" factory defaults for the Magellan 8500. 
+<p>
+Run the command
+<pre>
+cat /dev/ttyS0
+</pre>
+
+<p>
+again and scan something. If you see a short prefix followed by the barcode translated into the right numbers on the screen, then the serial settings are correct. 
+<p>You shouldn't have to program Magellan scales, since IS4C is configured to work with them. However, if you are not using a Magellan scale, and the input on the screen are not barcode numbers, don't panic, we just have to program the scanner scale to the same settings. Usually this is done by scanning a series of special barcodes provided by the manufacturer. Follow the manufacturer's instructions. Should it become necessary for you to program the scanner scale, these are the IS4C settings that correspond to common scanner scale factory defaults.
+
+<ul>
+<li>Baud rate = 9600
+<li>Parity = odd
+<li>RTS/CTS handshaking = on
+<li>Data bits = 7
+<li>Stop bit = 1
+<li>Optional Prefix Byte = 53 (Capital S)
+<li>Terminator Byte = 13 (Carriage return)
+<li>Optional BCC = off
+</ul>
+
+<p>
+Now let's try sending data from the computer to the scanner-scale. 
+<pre>
+echo -e "S334\r" > /dev/ttyS0
+</pre>
+If you hear a beep, all is well.
+
+<a name="summary">
+<p>
+
+<b>To summarize this section on testing</b>
+<p>
+Run /pos/is4c/rs232/setport. 
+<p>
+Test for scanned input with 
+<pre>
+cat /dev/ttyS0
+</pre>
+You should be able to see a string of number corresponding to the barcode.
+<p>
+Test for output to to the scanner-scale with 
+<pre>
+echo -e "S334\r" > /dev/ttyS0
+</pre>
+You should hear a beep. 
+<p>
+If the results are unsatisfactory, the system won't work properly and you will have to program the scanner scale with special barcodes provided by the manufacturer.
+
+<p>
+<b>The Scanner-Scale Daemon ssd</b>
+<p>
+IS4C works with the scanner scale by continuously polling the serial port with a c program. The source is at /pos/is4c/rs232/ssd.c The program is compiled into a daemon 'ssd' and set to run at boot time, so that the lane computer is always listening to /dev/ttyS0. ssd performs two functions. 
+<p>
+1. It separates data coming in from the scanner-scale as either scanned data or scale data based on the prefix of the data stream. Scanned data is written to the file /pos/is4c/rs232/scanner and scale data is written to /pos/is4c/rs232/scale. Data streams that are mis-formed and garbled, and otherwise cannot be ascertained to be either, are discarded.
+<p>
+2. While scanned data comes in directly as an ASCII streams, scale data has to be polled. ssd sends commands to the scale based on previous responses from the scale in a continuous polling process to capture weight readings.
+<p>
+To get ssd up and running, 
+<br>compile /pos/is4c/rs232/ssd.c into /pos/is4c/rs232/ssd
+<p>
+On Slackware, this would be:
+
+<pre>
+cd /pos/is4c/rs232
+gcc ssd.c -o ssd
+</pre>
+
+Arrange for ssd to run at boot time. This involves putting a link to ssd in either /etc/rc.d/ or /etc/init.d and then invoking it in the appropriate initation file, such as rc.local. 
+
+While ssd is running, javascript code in a static frame uses AJAX to continuously read the contents of these files and pass them into PHP global variables. PHP also clears out /pos/is4c/rs232/scanner after each reading, to prepare the system for the next scanned item. Scale data, however, is not cleared out, because we want the global weight value to always be the weight of the item on the scale. 
+<p>
+
+
+Apache-PHP needs read permission for /pos/is4c/rs232/scale; read and write permission for /pos/is4c/rs232/scanner. It also needs execute permission for the script files in /pos/is4c/rs232/. ssd needs write permission for /pos/is4c/rs232/scale.
+
+I open everything up to keep the headaches at bay
+
+<pre>
+chmod -R 777 /pos/is4c/rs232
+</pre>
+
+<p>
+Let's check to see if everything is in place. 
+<br>With ssd running, read the file /pos/is4c/rs232/scale
+<pre>tail /pos/is4c/rs232/scale</pre>
+It should say 'S143'. Put a weight on the scale and read the file again. The weight should now be reported following the prefix 'S144'. 
+<br>Next, scan a barcode and read the file /pos/is4c/rs232/scanner.  you should see a four character prefix starting with 'S08', with the fourth character dependent on the type of barcode you are scanning and a string of barcode number after that.
+
+When IS4C is up and running, the javascript/PHP code reads these files for you, and that is essentially how the Linux version of IS4C works with the scanner-scale. 
+<p><a href="scannerscale.txt">Here's</a> some more information. 
+<p>Magellan provides the following 
+<a href="SCRS232.DOC">document</a>
+detailing the polling behaviors of their single cable RS232 scales.
+
+<p>
+<b>One Final Detail</b>
+<p>
+When the scanner scale comes from the factory, it is set to give a "good read beep" whenever a barcode is successfully scanned. A good read beep, however, does not guarantee that the data stream is properly sent to the serial port and captured by IS4C. An item is only truly rung in when it is written into a table in the translog database. IS4C therefore asks the scanner scale to make a beep whenever an item is correctly inserted. When an item is successfuly rung in, with a scanner-scale that has just been taken "out of the box", the system will therefore make two beeps - the machine good read beep, and the IS4C insertion confirmation beep. The gap between the two beeps gives you an indication of how fast, or slow IS4C is running. Two beeps per items, however, assault the senses. 
+<p>
+At the Wedge, we disable the machine good read beep, so that the cashier only hears one beep - the IS4C confirmation beep. If there is no beep, the item has not been inserted into the database, and it has to be scanned again. The machine good read beep has to be diabled by directly programming the scanner-scale with the special series of programming barcodes. Consult the documentation from the manufacturer.
+
+</span>
+
+<td height=20></td></tr>
+<tr><td height=1 width=490 colspan=2 bgcolor="#800000"></td></tr>
+
+</table>
+
+<p>&nbsp;
+</body>
+</html>

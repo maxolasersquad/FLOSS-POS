@@ -1,0 +1,6 @@
+use mysql;
+
+grant all privileges ON *.* TO ''@'localhost' IDENTIFIED BY '' WITH GRANT OPTION;
+grant all privileges ON *.* TO 'is4clane'@'localhost' IDENTIFIED BY '' WITH GRANT OPTION;
+grant all privileges ON *.* TO 'is4cserver'@'%' IDENTIFIED BY '' WITH GRANT OPTION;
+

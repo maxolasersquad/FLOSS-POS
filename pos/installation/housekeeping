@@ -1,0 +1,5 @@
+#!/bin/sh
+
+chmod 777 /dev/lp0
+chmod 777 /dev/ttyS0
+chmod -R 777 /pos/is4c/rs232

@@ -1,0 +1,37 @@
+#!/bin/sh
+
+# Install freetds for MSSQL database access
+/pos/installation/freetds-install
+
+# Install mysql 5
+/pos/installation/mysql5-install
+
+#Install apache 
+/pos/installation/apache-install
+
+# Install php 5
+/pos/installation/php5-install
+
+# Edit conf files
+/pos/installation/is4c-config.pl
+
+cp /etc/rc.d/rc.httpd.is4c /etc/rc.d/rc.httpd
+cp /usr/local/apache/conf/httpd.conf.is4c /usr/local/apache/conf/httpd.conf
+
+chmod 755 /etc/rc.d/rc.httpd
+rm /etc/apache/httpd.conf
+ln -s /usr/local/apache/conf/httpd.conf /etc/apache/httpd.conf
+
+rm /etc/apache/php.ini
+cp /pos/installation/php-5.0.2.ini /usr/local/php/lib/php.ini
+ln -s /usr/local/php/lib/php.ini /etc/apache/php.ini
+
+/etc/rc.d/rc.httpd start
+/etc/rc.d/rc.mysqld start
+
+sleep 5
+
+# Install databases
+/pos/installation/lane_db-install
+
+

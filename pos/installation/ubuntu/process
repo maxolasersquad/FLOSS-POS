@@ -1,0 +1,3 @@
+27760 ?        Ss     0:00 /etc/init.d/ssd
+30599 pts/2    S+     0:00 sh -c ps x | grep /etc/init.d/ssd > process
+30601 pts/2    S+     0:00 grep /etc/init.d/ssd

@@ -1,0 +1,105 @@
+<HTML>
+<head>
+<title>Query</title>
+<!--<link rel="stylesheet" href="../src/style.css" type="text/css" />-->
+<link href="../src/style.css"
+      rel="stylesheet" type="text/css" />
+<script src="../src/CalendarControl.js"
+        language="javascript"></script>
+</head>
+<body>
+<link href="../src/style.css"
+      rel="stylesheet" type="text/css">
+<script src="../src/CalendarControl.js"
+        language="javascript"></script>
+<!-- <body bgcolor="#99CCC"> -->
+	<!--  <form method = "post" action="deptSales.php"> -->
+	<form method="get" action="deptSales.php" target="_blank">		
+
+<div id="box">
+	<table border="0" cellspacing="3" cellpadding="3">
+		<tr> 
+            <th align="center"> <p><b>Select dept.*</b></p></th>
+		</tr>
+		<tr>
+<?php
+include($_SERVER["DOCUMENT_ROOT"].'/src/departments.html');
+?>
+		</tr>
+	</table>
+</div>
+<div id="box">
+	<table border="0" cellspacing="3" cellpadding="3">
+		<tr>
+			<td align="right">
+				<p><b>Date Start</b> </p>
+		    	<p><b>End</b></p>
+			</td>
+			<td>			
+				<p><input type=text size=10 name=date1 onfocus="showCalendarControl(this);">&nbsp;&nbsp;*</p>
+				<p><input type=text size=10 name=date2 onfocus="showCalendarControl(this);">&nbsp;&nbsp;*</p>
+			</td>
+			<td colspan=2>
+				<p>Date format is YYYY-MM-DD</br>(e.g. 2004-04-01 = April 1, 2004)</p>
+			</td>
+		</tr>
+	</table>
+</div>
+<div id="box">
+	<table border="0" cellspacing="3" cellpadding="3">
+<!--		<tr> 
+			<td align="right"><p><b>Group info by:</b></p></td>
+			<td> 
+				<select name="sort" size="1">
+					<option>PLU</option>
+					<option>Department</option>
+					<option>Date</option>
+				</select> 
+			</td>
+			<td>&nbsp;</td>
+		</tr>
+-->		<tr>
+			<td align="right"><p><b>Sales totals</b></p></td>
+			<td><input type="checkbox" value="1" name="salesTotal"></td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td align="right"><p><b>Open ring totals</b></p>
+			</td><td><input type="checkbox" value="1" name="openRing"></td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td align="right"><p><b>PLU report</b></p></td>
+			<td>
+				<input type="checkbox" value="1" name="pluReport">
+			</td>
+			<td colspan="2" lign="center">
+				<p>Group PLUs by:<select name="sort" size="1">
+					<option>PLU</option>
+					<option>Qty</option>
+					<option>Sales</option>
+					<option>Department</option>
+					<option>Subdepartment</option>
+				</select></p>
+			</td>		
+		</tr>
+		<tr>
+			<td align="right"><p><b>In use</b></p></td>
+			<td><input type="checkbox" value="1" name="inUse"></td>
+			<td><p>Filter out items that are NOT currently in use</p></td>
+		</tr>
+		<tr>
+			<td colspan="3" align="center">
+				<p>* -- indicates required field</p>
+			</td>
+		</tr>
+		<tr> 
+			<td>&nbsp;</td>
+			<td> <input type=submit name=submit value="Submit"> </td>
+			<td> <input type=reset name=reset value="Start Over"> </td>
+		</tr>
+	</table>
+</div>
+</form>
+</body>
+</html>

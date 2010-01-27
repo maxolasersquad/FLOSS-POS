@@ -1,0 +1,19 @@
+#!/bin/sh
+
+/etc/rc.d/rc.httpd stop
+rm -r /usr/local/apache
+cp -f /pos/tarball/apache_1.3.31.tar.gz /tmp
+cd /tmp
+
+gunzip apache_1.3.31.tar.gz
+tar -xvf apache_1.3.31.tar
+rm apache_1.3.31.tar
+
+cd apache_1.3.31
+
+./configure --prefix=/usr/local/apache --enable-module=so
+make
+make install
+
+echo "<? phpinfo(); ?>" > /usr/local/apache/htdocs/phpinfo.php
+
