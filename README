@@ -1,0 +1,21 @@
+V0.1
+
+This is a work in progress to improve upon the IS4C code base.  Until some major milestones have been met, this will stay in an alpha stag and marked as V0.1.
+
+TODO server:
+Rewrite Fannie interface with GPLed code, and with reports and management that doesn't error out all over the place.
+Allow members to have a 0% discount.
+
+TODO lane:
+Have an optional second price for members only.
+
+Bugs:
+All sorts of interface bugs exist on the fannie interface.  There's too many to even bother going through and listing.
+
+Installation:
+It is important to not try to install a lane and a server on the same machine.  It won't work and will likely leave things in a sorry state to do either.
+Installation scripts that work on Ubuntu 9.10 Karmic are included in the base directory.  It is recommended that you run these on pristine install with all updates applied.
+To install the server, go into the directory that you saved the files in and run ./get-server.sh
+To install a lane, go into the directory that you saved the files in and run ./get-lane.sh
+
+In the meantime, more detailed instructions can be found at http://www.wedge.coop/is4c/

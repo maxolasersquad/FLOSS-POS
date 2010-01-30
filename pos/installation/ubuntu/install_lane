@@ -16,7 +16,8 @@ echo "Downloading and installing other necessary packages"
 apt-get -y install openssh-server
 apt-get -y install openssh-client
 apt-get -y install build-essential
-apt-get -y install galeon
+http://dl.google.com/dl/linux/direct/google-chrome-beta_current_i386.deb
+dpkg -i google-chrome-beta_current_i386.deb
 
 echo "... Done"
 
@@ -66,5 +67,5 @@ cat /pos/installation/ubuntu/is4c.header
 echo "Enter to load browser and start IS4C: "
 read STARTIS4C
 
-/usr/bin/galeon "localhost"
+google-chrome "localhost"
 

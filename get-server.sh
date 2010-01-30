@@ -3,7 +3,7 @@
 ## Tom Roche, Durham Food Co-op, 2007 ##
 
 INSTALLROOT="/pos"
-URI="http://www.wedge.coop/is4c/download/pos.tar.gz"
+URI="http://cloud.github.com/downloads/maxolasersquad/FLOSS-POS/floss-pos.tar.gz"
 FN=$(basename $URI)
 FP="/$FN"
 
