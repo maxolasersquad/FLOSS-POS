@@ -5,8 +5,6 @@ print "Enter configuration file (php.ini) path\n";
 print "(default = /etc/php5/apache2/php.ini): "; 
 $phpini = <STDIN>;
 
-
-
 if (length($phpini) == 1) {
 	$phpini = "/etc/php5/apache2/php.ini";
 }

@@ -1,21 +1,10 @@
 #!/bin/sh
 
-echo "Downloading and installing Apache-MySQL-PHP"
+echo "Downloading and installing needed software."
 
 apt-get update
-apt-get -y install apache2
-apt-get -y install mysql-server-5.0
-apt-get -y install mysql-client-5.0
-apt-get -y install php5
-apt-get -y install php5-mysql
+apt-get -y install apache2 mysql-server-5.0 mysql-client-5.0 php5 php5-mysql openssh-server openssh-client build-essential
 
-echo "... Done"
-
-echo "Downloading and installing other necessary packages"
-
-apt-get -y install openssh-server
-apt-get -y install openssh-client
-apt-get -y install build-essential
 http://dl.google.com/dl/linux/direct/google-chrome-beta_current_i386.deb
 dpkg -i google-chrome-beta_current_i386.deb
 
@@ -26,7 +15,6 @@ chmod -R 777 /pos
 echo "Establish databases"
 
 /pos/installation/ubuntu/lane_db-install
-
 
 echo "compiling scanner scale daemon"
 
@@ -56,10 +44,10 @@ ln -s /pos/is4c/rs232/lptty /etc/init.d/lptty
 
 echo "... Done"
 
-
+#Configure php
 /pos/installation/ubuntu/php_lane.pl
+#Configure apache2
 /pos/installation/ubuntu/apache_lane.pl
-
 
 echo "IS4C configuration completed"
 cat /pos/installation/ubuntu/is4c.header
@@ -68,4 +56,3 @@ echo "Enter to load browser and start IS4C: "
 read STARTIS4C
 
 google-chrome "localhost"
-

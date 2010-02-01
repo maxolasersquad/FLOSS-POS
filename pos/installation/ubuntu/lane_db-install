@@ -1,12 +1,9 @@
 #!/bin/sh
 
-#--ATF prompt for mysql binaries path and user/pwd to connect
-echo -n "Path to MySQL binaries [default /usr/bin]: "
-read MYPATH
-if [ "${MYPATH}" = "" ]; then
-  MYPATH=/usr/bin
-fi
-echo -n "MySQL user account [default root]: "
+#Prompt for mysql user/pwd to connect
+MYPATH=/usr/bin
+
+echo -n "MySQL administrative user account [default root]: "
 read MYUSR
 if [ "${MYUSR}" = "" ]; then
   MYUSR=root
@@ -17,14 +14,12 @@ stty -echo
 read MYPWD
 stty ${STTY_ECHO}
 CMD="${MYPATH}/mysql --user=${MYUSR} --password=${MYPWD}"
-#--atf
-
 
 cd /pos/installation/mysql/script
-
+     
 ${CMD} < create_lane_db
 
-
+#Create the translog tables
 cd ../translog/tables
 
 ${CMD} < activities.table
@@ -37,13 +32,12 @@ ${CMD} < localtrans.table
 ${CMD} < localtransarchive.table
 ${CMD} < suspended.table
 
-
+#Create the translog views
 cd ../views
 
 ${CMD} < localtranstoday.viw
 ${CMD} < suspendedtoday.viw
 ${CMD} < suspendedlist.viw
-
 
 ${CMD} < lttsummary.viw
 ${CMD} < lttsubtotals.viw
@@ -66,7 +60,7 @@ ${CMD} < staffdiscountremove.viw
 
 ${CMD} < memchargetotals.viw
 
-
+#Create the opdata tables
 cd ../../opdata/tables
 
 ${CMD} < chargecode.table
@@ -79,22 +73,23 @@ ${CMD} < products.table
 ${CMD} < promomsgs.table
 ${CMD} < tenders.table
 
-cd ../data
+#cd ../data
 
-${CMD} < couponcodes.insert
-${CMD} < custdata.insert
-${CMD} < departments.insert
-${CMD} < employees.insert
-${CMD} < globalvalues.insert
-${CMD} < products.insert
-${CMD} < tenders.insert
+#${CMD} < couponcodes.insert
+#${CMD} < custdata.insert
+#${CMD} < departments.insert
+#${CMD} < employees.insert
+#${CMD} < globalvalues.insert
+#${CMD} < products.insert
+#${CMD} < tenders.insert
 
+#Create the translog views
 cd ../views
 
 ${CMD} < chargecodeview.viw
 ${CMD} < memchargebalance.viw
 
-
+#Create the is4c_op tables
 cd ../../is4c_op/tables
 
 ${CMD} < couponcodes.table
@@ -105,7 +100,7 @@ ${CMD} < employees.table
 ${CMD} < products.table
 ${CMD} < tenders.table
 
-
+#Issue necessary grants on the newly created tables and views.
 cd ../../script
 
 ${CMD} < create_lane_acct

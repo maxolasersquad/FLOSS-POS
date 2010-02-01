@@ -7,9 +7,7 @@ print "\nServerName set to 127.0.0.1";
 print "\n\nWe will Edit the location of your web root,";
 print "\nassuming your config file is /etc/apache2/sites-available/default.";
 print "\nOriginal file will be saved as default.dist";
-
 print "\n\ny = continue, n = abort. edit by hand later (default y): ";
-
 $continue = <STDIN>;
 
 if (length($continue) == 1) {
@@ -43,7 +41,6 @@ if (uc($continue) eq "Y" || uc($continue) eq "YES") {
 		print NEWFILE $line;		
 		
 	}
-
 
 	close(NEWFILE);
 	close(FILE);
