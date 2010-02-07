@@ -84,7 +84,7 @@ $delISR = mysql_query($del99Q);
 if (!$price) $price = 0;
 
 $query99 = "INSERT INTO products
-	VALUES($upc,'$descript',$price,0,0.00,0,0.00,0,0.00,0,'','',$department,'',$tax,$FS,$Scale,0,now(),0,0,1,0,'',0,$QtyFrc,1,$subdepartment,$deposit,'')";
+	VALUES($upc,'$descript',$price,0,0,0,0.00,0,0.00,0,NOW(),null,$department,'',$tax,$FS,$Scale,0,now(),0,0,1,0,'',0,$QtyFrc,1,$subdepartment,$deposit,'',null, $memberPrice)";
 // echo "<br>" .$query99. "<br>";
 $resultI = mysql_query($query99);
 
@@ -101,7 +101,7 @@ $row = mysql_fetch_array($prodR);
         echo "<th>Dept<th>subDept<th>FS<th>Scale<th>QtyFrc<th>NoDisc<th>inUse<th>deposit</b>";
         echo "</tr>";
         echo "<tr>";
-       
+
 		$dept = $row[12];
         $query2 = "SELECT * FROM departments where dept_no = ".$row[12];
         $result2 = mysql_query($query2);
@@ -140,7 +140,7 @@ $row = mysql_fetch_array($prodR);
                 if($row["inUse"]==1){
                         echo " checked";
                 }
-        echo "></td><td align=center><input type=text value='$row["deposit"]' name='deposit' size='5'";
+        echo "></td><td align=center><input type=text value='" . $row["deposit"] . "' name='deposit' size='5'";
 		echo "></td></tr>";
         
         echo "</table>";

@@ -29,7 +29,7 @@
 	<a href="/admin/auto_volunteers.php">Volunteer Hours</a></br>
 	Enter volunteer hours worked
 </br></br>
-	<a href="/mem/auto_mem_find">Membership Management</a></br>
+	<a href="/mem/auto_mem_find.php">Membership Management</a></br>
 	Access membership database
 </br></br>
 	<a href="auto_charge.php">Staff Charges</a><br>

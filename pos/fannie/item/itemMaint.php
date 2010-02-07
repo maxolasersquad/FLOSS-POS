@@ -58,17 +58,13 @@ if(isset($_POST['submit'])){
     itemParse($upc);
 
 }else{
-
-echo "<head><title>Edit Item</title></head>";
-echo "<BODY onLoad='putFocus(0,0);'>";
-echo "<form action=/item/auto_itemMaint.php method=post>";
-echo "<input name=upc type=text id=upc> Enter UPC/PLU or product name here<br><br>";
-
-echo "<input name=submit type=submit value=submit>";
-echo "</form>";
-}
-
-echo "</body>";
-echo "</html>";
 ?>
-
+<head><title>Edit Item</title></head>
+	<body onLoad='putFocus(0,0);'>
+		<form action='/item/auto_itemMaint.php' method='post'>
+			<input name='upc' type='text' id='upc'> Enter UPC/PLU or product name here<br><br>
+			<input name='submit' type='submit' value='submit'>
+		</form>
+	</body>
+</html>
+<?}

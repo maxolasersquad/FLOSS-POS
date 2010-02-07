@@ -145,16 +145,17 @@ if (isset($_POST['submitted'])) { // If the form has been submitted, check the d
 			
 		}
 		$psmemtype = $_POST['ps_memtype'];
-		$psstaff = $_POST['ps_staff'];
-		if ($psstaff == 6) {$psType='reg';} else {$psType='pc';}
+		isset($_POST['ps_staff'])?$psstaff = $_POST['ps_staff']:$ps_staff='0';
+		if ($ps_staff == 6) {$psType='reg';} else {$psType='pc';}
 		if ($pscharge == 1) {$pslimit=9999;} else {$pslimit=0;}
 
 	}
 	if (empty($errors)) {
-		$ps = "($cn, 1, '$psfn', '$psln', $psWriteCheck, $psd, $psmemtype, '$psType', $psstaff, $pscharge, $pslimit)";
+		$ps = "($cn, 1, '$psfn', '$psln', $psWriteCheck, $psd, $psmemtype, '$psType', $ps_staff, $pscharge, $pslimit)";
 		if ($num_records == 2) {$ss = ", ($cn, 2, '$ssfn', '$ssln', $ssWriteCheck, $ssd, $ssmemtype, '$ssType', $ssstaff, $sscharge, $sslimit)";}
 		elseif ($num_records == 1) {$ss = '';}
 		$query = "INSERT INTO custdata (CardNo, personNum, FirstName, LastName, WriteChecks, discount, memType, Type, staff, ChargeOk, MemDiscountLimit) VALUES " . $ps . $ss;
+echo $query . '~' . $ps . '~' . $ss;
 		$result = @mysql_query($query);
 			
 		if ((mysql_affected_rows() == 1) || (mysql_affected_rows() == 2)) { // If the query was successful.
@@ -187,12 +188,12 @@ if (isset($_POST['submitted'])) { // If the form has been submitted, check the d
 // Always show the form.
 
 // Retrieve the user's information.
-$query = "SELECT staff_no, staff_desc FROM staff ORDER BY staff_no ASC";
+//$query = "SELECT staff_no, staff_desc FROM staff ORDER BY staff_no ASC";
 $query2 = "SELECT memtype, memDesc FROM memtype ORDER BY memtype ASC";
 $query3 = "SELECT max(cardno) AS max FROM custdata WHERE cardno < 9999";
 $query4 = "SELECT staff_no, staff_desc FROM staff ORDER BY staff_no ASC";
 $query5 = "SELECT memtype, memDesc FROM memtype ORDER BY memtype ASC";
-$result = @mysql_query($query);
+//$result = @mysql_query($query);
 $result2 = @mysql_query($query2);
 $result3 = @mysql_query($query3);
 $result4 = @mysql_query($query4);
@@ -216,10 +217,10 @@ $result5 = @mysql_query($query5);
 	echo '<p>House Charge? <input type="checkbox" name="ps_charge_ok" /></p>';
 	echo '<p>Write Checks? <input type="checkbox" name="ps_checks_ok" CHECKED /></p>
 	<p>Discount: <input type="text" name="ps_discount" size="3" maxlength="2" value="2" />%</p>
-	<p>Member Type: <select name="ps_staff">';
-	while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+	<!--<p>Member Type: <select name="ps_staff">-->';
+	/*while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
 		echo '<option value='. $row['staff_no'] . '>' . $row['staff_desc'];
-	}
+	}*/
 	echo '</select>
 	<p>Member Status: <select name="ps_memtype">';
 	while ($row2 = mysql_fetch_array($result2, MYSQL_ASSOC)) {
@@ -228,7 +229,7 @@ $result5 = @mysql_query($query5);
 		echo '>' . $row2['memDesc'];
 	}
 	echo '</select><br /><br />
-	<h3><u><input type="checkbox" name="ss" />  Secondary Shareholder</u></h3>
+	<div style="display: none"><h3><u><input type="checkbox" name="ss" />  Secondary Shareholder</u></h3>
 	<p>First Name: <input type="text" name="ss_first_name" size="15" maxlength="15" /></p>
 	<p>Last Name: <input type="text" name="ss_last_name" size="15" maxlength="30" /></p>';
 	echo '<p>House Charge? <input type="checkbox" name="ss_charge_ok" /></p>';
@@ -245,7 +246,7 @@ $result5 = @mysql_query($query5);
 		if ($row5['memtype'] == 1) {echo ' SELECTED';}
 		echo '>' . $row5['memDesc'];
 	}
-	echo '</select><br />';
+	echo '</select></div><br />';
 	echo '<p><input type="submit" name="submit" value="Submit" /></p>
 	<input type="hidden" name="submitted" value="TRUE" />
 	</form>';
