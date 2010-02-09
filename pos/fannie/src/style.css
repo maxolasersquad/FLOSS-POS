@@ -10,28 +10,28 @@
 }
 
 p {
-	font: "Arial,Lucida";
+	font: Arial,Lucida, sans;
 	color:330066;
 	font-size: 1em;
 	line-height: 1.4em;
 }
 
 h2 {
-	font: "Arial,Lucida";
+	font: Arial,Lucida, sans;
 	font-size: 1.6em;
 	line-height: 1.8em;
 	color:330066;
 }
 
 h3 {
-	font: "Arial,Lucida";
+	font: Arial,Lucida, sans;
 	font-size: 1.2em;
 	font-weight: bolder;
 	line-height: 0.2em;
 	color: 330066;
 }
 h4 {
-	font: "Arial,Lucida";
+	font: Arial,Lucida, sans;
 	font-size: 1.4em;
 	line-height: 1.4em;
 	letter-spacing: 0.2em;
@@ -115,7 +115,7 @@ td.pme-stats   { text-align: right;  }
   display: none;
   left: 0px;
   position: absolute;
-  top: 0px
+  top: 0px;
   height: 250px;
   width: 250px;
   z-index: 99;
