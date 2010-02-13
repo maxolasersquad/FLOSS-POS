@@ -1,6 +1,6 @@
 V0.1
 
-This is a work in progress to improve upon the IS4C code base.  Until some major milestones have been met, this will stay in an alpha stag and marked as V0.1.
+This is a work in progress to improve upon the IS4C code base.  Until some major milestones have been met, this will stay in an alpha stage and marked as V0.1.
 
 TODO server:
 Rewrite Fannie interface with GPLed code, and with reports and management that doesn't error out all over the place.
