@@ -1,6 +1,5 @@
 <?php
 	require_once($_SERVER["DOCUMENT_ROOT"]."/define.conf");
-	require_once($_SERVER["DOCUMENT_ROOT"].'/src/htmlparts.php');
 	
 	if (isset($_REQUEST['t'])) {
 		switch ($_REQUEST['t']) {
@@ -39,21 +38,13 @@
 	
 	$html='<!DOCTYPE HTML>
 <html>
-	<head>';
-	
-	$html.=head();
-	
-	$html.='
+	<head>
+		<link href="screen.css" media="screen" rel="stylesheet" type="text/css"/>
 		<title>Synchronization - '.$type.'</title>
 	</head>
-	<body>';
-	
-	$html.=body();
-	
-	$html.='
-		<div id="page_panel">
-			<h1>Synchronize '.$type.'</h1>
-			<form action="./synchronize.php" method="post" name="synchronize">';
+	<body>
+		<h1>Synchronize '.$type.'</h1>
+		<form action="./synchronize.php" method="post" name="synchronize">';
 	
 // TODO - Auto generate lanes from define.conf, for now, hardcode
 	$lanes=array(
@@ -62,18 +53,14 @@
 	
 	foreach ($lanes as $lane) {
 		$html.='
-				<fieldset>
-					<label>'.$lane['Name'].'</label>
-					<input checked name="lanes[]" type="checkbox" value="'.$lane['IP'].'"/>
-				</fieldset>';
+			<label>'.$lane['Name'].'</label>
+			<input checked name="lanes[]" type="checkbox" value="'.$lane['IP'].'"/>';
 	}
 	
 	$html.='
-				<fieldset>
-					<input type="hidden" name="t" value="'.$name.'"/>
-					<input type="submit"/>
-				</fieldset>
-			</form>
+			<input type="hidden" name="t" value="'.$name.'"/>
+			<input type="submit"/>
+		</form>
 		<p class="status">';
 	
 	$link=mysql_connect($_SESSION["mServer"], $_SESSION["mUser"], $_SESSION["mPass"]);
