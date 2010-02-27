@@ -3,7 +3,7 @@
 ## Tom Roche, Durham Food Co-op, 2007 ##
 
 INSTALLROOT="/pos"
-URI="http://cloud.github.com/downloads/maxolasersquad/FLOSS-POS/floss-pos.tar.gz"
+URI="http://maxolasersquad.com/is4c/pos.tar.gz"
 FN=$(basename $URI)
 FP="/$FN"
 
